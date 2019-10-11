@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="18G95" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="BarcodePost" representedClassName="BarcodePost" parentEntity="Posts" syncable="YES">
+        <attribute name="barcode" optional="YES" attributeType="Binary"/>
+        <attribute name="dateOfCreation" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="note" optional="YES" attributeType="String"/>
+        <attribute name="picture" optional="YES" attributeType="Binary"/>
+        <attribute name="value" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="HistoryPost" representedClassName="HistoryPost" parentEntity="Posts" syncable="YES">
+        <attribute name="dateOfCreation" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="picture" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="value" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Posts" representedClassName="Posts" isAbstract="YES" syncable="YES"/>
+    <entity name="QRPost" representedClassName="QRPost" parentEntity="Posts" syncable="YES">
+        <attribute name="data" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="dateOfCreation" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="value" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="BarcodePost" positionX="780.921875" positionY="-11742.69140625" width="128" height="118"/>
+        <element name="HistoryPost" positionX="466.33203125" positionY="-11743.09765625" width="128" height="103"/>
+        <element name="Posts" positionX="586.546875" positionY="-11878.4921875" width="128" height="43"/>
+        <element name="QRPost" positionX="618.02734375" positionY="-11742.0703125" width="128" height="103"/>
+    </elements>
+</model>
