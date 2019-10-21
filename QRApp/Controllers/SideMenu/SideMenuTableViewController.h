@@ -9,22 +9,11 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
-@class SideMenuTableViewController;
-@protocol SideMenuTableViewControllerDelegate
-- (void)setEditing;
-//- (void)dissMissSideMenuTVC;
-- (void)clearHistory;
-- (void)showAll;
-- (void)showQR;
-- (void)showPDF;
--(void)showBarcode;
--(void)showText;
-@end
+
+extern NSString* const UserCommitSettingsDidChangeNotificftion;
+
 
 @interface SideMenuTableViewController : UITableViewController
-
-@property (nonatomic, weak) id <SideMenuTableViewControllerDelegate> delegate;
-
 
 @property (weak, nonatomic) IBOutlet UIView *textView;
 

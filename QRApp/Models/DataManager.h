@@ -17,7 +17,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (DataManager*) sharedManager;
 
 - (void)saveContext;
-//-(void) deleteHistory;
 -(void)deleteHistoryScan;
 -(void)deleteQR;
 -(void) deleteAll;

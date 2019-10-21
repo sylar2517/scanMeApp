@@ -11,7 +11,7 @@
 #import "HistoryCell.h"
 #import "HistoryPost+CoreDataClass.h"
 #import "ResultViewController.h"
-//#import "PopUpForCameraOrGallery.h"
+
 #import "DataManager.h"
 
 #import "ContactTableViewController.h"
@@ -19,11 +19,23 @@
 #import "WebViewController.h"
 #import "ScrollViewController.h"
 #import "ResultTextVC.h"
-#import "SideBarViewController.h"
+
+#import "LGSideMenuController.h"
 
 
-@interface HistoryScanTVController () <ScrollViewControllerDelegate>
-///<PopUpForCameraOrGalleryDelegate>
+typedef enum {
+    Editing,
+    ShowAll,
+    ShowQR,
+    ShowPDF,
+    ShowBarcode,
+    ShowText,
+    ClearHistory
+} UserCommitSettings;
+
+
+@interface HistoryScanTVController () <ScrollViewControllerDelegate, LGSideMenuDelegate>
+
 
 @property(strong, nonatomic)NSMutableArray* filterObject;
 @property(assign, nonatomic)BOOL isFiltered;
@@ -35,6 +47,7 @@
 @property(strong, nonatomic)NSArray*withExport;
 @property(strong, nonatomic)NSArray*withOutExport;
 
+@property(assign, nonatomic)UserCommitSettings* settings;
 
 @end
 
@@ -71,14 +84,63 @@
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, self.tabBarController.tabBar.frame.size.width, 0);
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
     
-//     [self.navigationItem setLargeTitleDisplayMode:(UINavigationItemLargeTitleDisplayModeAlways)];
 
     self.navigationItem.largeTitleDisplayMode = UINavigationItemLargeTitleDisplayModeAlways;
     UIRefreshControl* refresh = [[UIRefreshControl alloc]init];
     [refresh addTarget:self action:@selector(refreshTableView) forControlEvents:(UIControlEventValueChanged)];
     self.refreshControl = refresh;
     self.isEditing = NO;
+
+    
+    LGSideMenuController* sideMenu = self.parentViewController.parentViewController;
+    sideMenu.delegate = self;
+   
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(sideMenuSettings: )
+                                                 name:@"UserCommitSettingsDidChangeNotificftion"
+                                               object:nil];
+    
+    
+    
 }
+
+
+-(void)sideMenuSettings:(NSNotification*)note{
+
+    LGSideMenuController* sideMenu = self.parentViewController.parentViewController;
+    __weak HistoryScanTVController* weakSelf = self;
+    [sideMenu hideRightViewAnimated:YES completionHandler:^{
+        UserCommitSettings settings = [[note.userInfo valueForKey:@"resultForHistory"] intValue];
+        switch (settings) {
+            case Editing:
+                [weakSelf setEditingHistory];
+                break;
+            case ShowAll:
+                [weakSelf showAll];
+                break;
+            case ShowQR:
+                [weakSelf showQR];
+                break;
+            case ShowPDF:
+                [weakSelf showPDF];
+                break;
+            case ShowBarcode:
+                [weakSelf showBarcode];
+                break;
+            case ShowText:
+                [weakSelf showText];
+                break;
+            case ClearHistory:
+                [weakSelf clearHistory];
+                break;
+            default:
+                break;
+        }
+    }];
+
+}
+
+
 -(void)refreshTableView{
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
@@ -92,12 +154,17 @@
     [self showAll];
 }
 
+- (void)dealloc
+{
+     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - Side Bar methods
 -(void)showAll{
 
     self.fetchedResultsController = nil;
     [NSFetchedResultsController deleteCacheWithName:@"Master"];
-
+    [self.navigationItem setTitle:@"История"];
     [self.tableView reloadData];
 }
 -(void)showQR{
@@ -109,6 +176,7 @@
     if (![[self fetchedResultsController] performFetch:&error]) {
         // Handle you error here
     }
+    [self.navigationItem setTitle:@"История (QR)"];
     [self.tableView reloadData];
 
 }
@@ -122,6 +190,7 @@
     if (![[self fetchedResultsController] performFetch:&error]) {
         // Handle you error here
     }
+    [self.navigationItem setTitle:@"История (PDF)"];
     [self.tableView reloadData];
     
 }
@@ -134,6 +203,7 @@
     if (![[self fetchedResultsController] performFetch:&error]) {
         // Handle you error here
     }
+    [self.navigationItem setTitle:@"Штрихкоды"];
     [self.tableView reloadData];
     
 }
@@ -146,6 +216,7 @@
     if (![[self fetchedResultsController] performFetch:&error]) {
         // Handle you error here
     }
+    [self.navigationItem setTitle:@"История (Тексты)"];
     [self.tableView reloadData];
     
 }
@@ -197,10 +268,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString* identifier = @"historyCell";
     HistoryCell* cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-    //    if (!cell) {
-    //        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier];
-    //        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    //    }
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
@@ -646,20 +713,22 @@
 
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"showContainerSideController"]) {
-        SideBarViewController* vc = segue.destinationViewController;
-        vc.historyVC = self;
-    }
+//    if ([segue.identifier isEqualToString:@"showContainerSideController"]) {
+//        SideBarViewController* vc = segue.destinationViewController;
+//        vc.historyVC = self;
+//    }
 }
 
 
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-//    
-//    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
-//    view.backgroundColor = [UIColor darkGrayColor];
-//
-//    
-//    
-//    return view;
-//}
+#pragma mark - LGSideMenuDelegate
+
+- (void)willShowRightView:(nonnull UIView *)rightView sideMenuController:(nonnull LGSideMenuController *)sideMenuController{
+
+    
+}
+
+- (void)willHideRightView:(nonnull UIView *)rightView sideMenuController:(nonnull LGSideMenuController *)sideMenuController{
+    
+}
+
 @end

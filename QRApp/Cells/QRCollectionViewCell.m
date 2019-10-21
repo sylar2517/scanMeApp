@@ -25,16 +25,10 @@
     
     self.deleteButton.layer.cornerRadius = self.deleteButton.frame.size.width/2;
     self.deleteButton.layer.masksToBounds = YES;
-    
-//    self.infoButton.layer.cornerRadius = 5;
-//    self.infoButton.layer.masksToBounds = YES;
+
 }
 
 - (IBAction)actionDelete:(UIButton *)sender {
     [self.delegate deleteCellForIndexPath:self.post];
 }
-
-//- (IBAction)actionShow:(UIButton *)sender {
-//    [self.delegate showCellForQR:self.post];
-//}
 @end

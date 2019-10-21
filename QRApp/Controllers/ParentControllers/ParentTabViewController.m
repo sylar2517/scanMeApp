@@ -8,6 +8,8 @@
 
 #import "ParentTabViewController.h"
 #import "HistoryScanTVController.h"
+#import "LGSideMenuController.h"
+
 @interface ParentTabViewController () <UITabBarControllerDelegate>
 
 @end
@@ -32,6 +34,10 @@
         
     } else {
         [self.delegateToChanged changeStartScroll:NO];        
+    }
+    
+    if ([viewController isKindOfClass:[LGSideMenuController class]]) {
+        [self.delegateToChanged changeStartScroll:YES];
     }
 }
 /*
