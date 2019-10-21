@@ -32,24 +32,6 @@
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ){
-        if (indexPath.row == 1 || indexPath.row == 3 || indexPath.row == 5 || indexPath.row == 7 || indexPath.row == 9 || indexPath.row == 10 || indexPath.row == 11) {
-            return NO;
-        } else {
-            return YES;
-        }
-    } else {
-        if (indexPath.row == 1 || indexPath.row == 3 || indexPath.row == 5 || indexPath.row == 7 || indexPath.row == 9 || indexPath.row == 11) {
-            return NO;
-        } else {
-            return YES;
-        }
-    }
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
-  
     if(indexPath.row == 0){
         [self.delegate setEditing];
     } else if (indexPath.row == 2){
@@ -66,6 +48,46 @@
     else if (indexPath.row == 12){
         [self.delegate clearHistory];
     }
+    
+    return NO;
+    
+    
+    
+    
+//    if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ){
+//        if (indexPath.row == 1 || indexPath.row == 3 || indexPath.row == 5 || indexPath.row == 7 || indexPath.row == 9 || indexPath.row == 10 || indexPath.row == 11) {
+//            return NO;
+//        } else {
+//            return YES;
+//        }
+//    } else {
+//        if (indexPath.row == 1 || indexPath.row == 3 || indexPath.row == 5 || indexPath.row == 7 || indexPath.row == 9 || indexPath.row == 11) {
+//            return NO;
+//        } else {
+//            return YES;
+//        }
+//    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+  
+//    if(indexPath.row == 0){
+//        [self.delegate setEditing];
+//    } else if (indexPath.row == 2){
+//        [self.delegate showAll];
+//    } else if (indexPath.row == 4){
+//        [self.delegate showQR];
+//    }  else if (indexPath.row == 6){
+//        [self.delegate showPDF];
+//    }  else if (indexPath.row == 8){
+//        [self.delegate showBarcode];
+//    } else if (indexPath.row == 10){
+//        [self.delegate showText];
+//    }
+//    else if (indexPath.row == 12){
+//        [self.delegate clearHistory];
+//    }
     
 }
 

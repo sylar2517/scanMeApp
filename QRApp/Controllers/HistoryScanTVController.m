@@ -88,9 +88,8 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-  
-    [self.navigationItem setTitle:@"История"];
-    
+    //[self.navigationItem setTitle:@"История"];
+    [self showAll];
 }
 
 #pragma mark - Side Bar methods

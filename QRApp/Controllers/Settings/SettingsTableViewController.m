@@ -63,12 +63,14 @@ static NSString* kSettingsFirstRun                  = @"FirstRun";
     
 }
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
-    return indexPath.row == 4 ? YES : NO;
+    return indexPath.row == 3 ? YES : NO;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row == 4) {
+    if (indexPath.row == 3) {
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
         [self allertForDelete];
+    } else {
+        NSLog(@"Not here");
     }
 }
 -(void)allertForDelete{

@@ -73,6 +73,8 @@
         }
     }
 
+    [self.view bringSubviewToFront:self.secondView];
+    
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
     if (CGRectGetWidth(screenBounds) == 320) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillAppear:) name:UIKeyboardWillShowNotification object:nil];

@@ -29,8 +29,8 @@
     self.cancelButton.layer.cornerRadius = 10;
     self.cancelButton.layer.masksToBounds = YES;
     
-    self.qrView.layer.cornerRadius = self.barcodeView.layer.cornerRadius =
-    self.qrImageView.layer.cornerRadius = self.barcodeImageView.layer.cornerRadius = 10;
+    self.qrView.layer.cornerRadius = self.barcodeView.layer.cornerRadius = 10;
+    self.qrImageView.layer.cornerRadius = self.barcodeImageView.layer.cornerRadius = 10; //self.barcodeImageView.bounds.size.width/2;
     
     self.qrView.layer.masksToBounds = self.barcodeView.layer.masksToBounds =
     self.qrImageView.layer.masksToBounds = self.barcodeImageView.layer.masksToBounds = YES;
@@ -63,16 +63,25 @@
         self.isQRCode = NO;
     }
     
-    UIImagePickerController* vc = [[UIImagePickerController alloc] init];
-    vc.delegate = self;
-    vc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    vc.allowsEditing = YES;
-    self.imagePickerController =vc;
+//    UIImagePickerController* vc = [[UIImagePickerController alloc] init];
+//    vc.delegate = self;
+//    vc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//    vc.allowsEditing = YES;
+//    self.imagePickerController =vc;
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        [self presentViewController:vc animated:YES completion:^{
+//        //        [weakIndicator stopAnimating];
+//        //        weakIndicator.hidden = YES;
+//        }];
+//    });
+//    
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self presentViewController:vc animated:YES completion:^{
-        //        [weakIndicator stopAnimating];
-        //        weakIndicator.hidden = YES;
-        }];
+       UIImagePickerController* vc = [[UIImagePickerController alloc] init];
+        vc.delegate = self;
+        vc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        vc.allowsEditing = YES;
+        self.imagePickerController =vc;
+        [self presentViewController:vc animated:YES completion:nil];
     });
 //    [self presentViewController:vc animated:YES completion:^{
 ////        [weakIndicator stopAnimating];
