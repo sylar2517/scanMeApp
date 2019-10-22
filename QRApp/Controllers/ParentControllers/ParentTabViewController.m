@@ -8,7 +8,6 @@
 
 #import "ParentTabViewController.h"
 #import "HistoryScanTVController.h"
-#import "LGSideMenuController.h"
 
 @interface ParentTabViewController () <UITabBarControllerDelegate>
 
@@ -20,6 +19,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.delegate = self;
+    
+   
 }
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
@@ -36,9 +37,7 @@
         [self.delegateToChanged changeStartScroll:NO];        
     }
     
-    if ([viewController isKindOfClass:[LGSideMenuController class]]) {
-        [self.delegateToChanged changeStartScroll:YES];
-    }
+   
 }
 /*
 #pragma mark - Navigation

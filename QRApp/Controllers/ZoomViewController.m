@@ -109,29 +109,14 @@
 
 - (IBAction)actionSave:(UIButton *)sender {
     UIImage* image = self.QRImageView.image;
-    
-    UIGraphicsBeginImageContext(CGSizeMake(400, 400));
-    [image drawInRect:CGRectMake(0, 0, 400, 400)];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    UIImageWriteToSavedPhotosAlbum(newImage, nil, nil, nil);
-    
-//    UIAlertController* ac = [UIAlertController alertControllerWithTitle:@"Сохранено" message:nil preferredStyle:(UIAlertControllerStyleAlert)];
-//    UIAlertAction* aa = [UIAlertAction actionWithTitle:@"Ок" style:(UIAlertActionStyleCancel) handler:nil];
-//    [ac addAction:aa];
-//    [self presentViewController:ac animated:YES completion:nil];
+    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+
     [self addBannerForSave];
 }
 
 - (IBAction)actionExport:(UIButton *)sender {
     
     UIImage* image = self.QRImageView.image;
-    
-//    UIGraphicsBeginImageContext(CGSizeMake(400, 400));
-//    [image drawInRect:CGRectMake(0, 0, 400, 400)];
-//    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//    NSData *imageData = UIImagePNGRepresentation(newImage);
     
     NSArray* array = @[image];
     UIActivityViewController* avc = [[UIActivityViewController alloc] initWithActivityItems:array applicationActivities:nil];

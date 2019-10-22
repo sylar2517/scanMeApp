@@ -1201,7 +1201,7 @@ static NSString* kSettingsFirstRun                  = @"FirstRun";
     if (metadataObjects == nil || metadataObjects.count == 0) {
         [self.qrView removeFromSuperview];
         self.qrView.frame = CGRectZero;
-        self.qrLabel.text = nil;
+        self.qrLabel.text = @"";
     }
  
     if (metadataObjects != nil && metadataObjects.count != 0) {

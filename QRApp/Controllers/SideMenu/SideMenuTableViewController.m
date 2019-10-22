@@ -10,7 +10,7 @@
 
 
 NSString* const UserCommitSettingsDidChangeNotificftion = @"UserCommitSettingsDidChangeNotificftion";
-
+NSString* const UserHideSideMenuNotificftion = @"UserHideSideMenuNotificftion";
 typedef enum {
     Editing,
     ShowAll,
@@ -30,7 +30,6 @@ typedef enum {
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
-
 #pragma mark - Table view data source
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -68,12 +67,14 @@ typedef enum {
     }
     
     NSDictionary* dict = [NSDictionary dictionaryWithObject:@(self.settings) forKey:@"resultForHistory"];
-
-    
     [[NSNotificationCenter defaultCenter] postNotificationName:UserCommitSettingsDidChangeNotificftion
                                                         object:nil
                                                       userInfo:dict];
 
+    NSDictionary* dict2 = [NSDictionary dictionaryWithObject:@(3) forKey:@"resultForHistory"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UserHideSideMenuNotificftion
+                                                           object:nil
+                                                         userInfo:dict2];
     
     return NO;
 

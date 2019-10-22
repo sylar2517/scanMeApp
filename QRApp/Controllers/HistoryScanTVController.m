@@ -20,7 +20,6 @@
 #import "ScrollViewController.h"
 #import "ResultTextVC.h"
 
-#import "LGSideMenuController.h"
 
 
 typedef enum {
@@ -33,8 +32,9 @@ typedef enum {
     ClearHistory
 } UserCommitSettings;
 
+NSString* const UserAddSideMenuNotificftion = @"UserAddSideMenuNotificftion";
 
-@interface HistoryScanTVController () <ScrollViewControllerDelegate, LGSideMenuDelegate>
+@interface HistoryScanTVController () <ScrollViewControllerDelegate>
 
 
 @property(strong, nonatomic)NSMutableArray* filterObject;
@@ -90,54 +90,43 @@ typedef enum {
     [refresh addTarget:self action:@selector(refreshTableView) forControlEvents:(UIControlEventValueChanged)];
     self.refreshControl = refresh;
     self.isEditing = NO;
-
-    
-    LGSideMenuController* sideMenu = self.parentViewController.parentViewController;
-    sideMenu.delegate = self;
    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(sideMenuSettings: )
                                                  name:@"UserCommitSettingsDidChangeNotificftion"
                                                object:nil];
-    
-    
-    
+
 }
 
 
 -(void)sideMenuSettings:(NSNotification*)note{
 
-    LGSideMenuController* sideMenu = self.parentViewController.parentViewController;
-    __weak HistoryScanTVController* weakSelf = self;
-    [sideMenu hideRightViewAnimated:YES completionHandler:^{
-        UserCommitSettings settings = [[note.userInfo valueForKey:@"resultForHistory"] intValue];
-        switch (settings) {
-            case Editing:
-                [weakSelf setEditingHistory];
-                break;
-            case ShowAll:
-                [weakSelf showAll];
-                break;
-            case ShowQR:
-                [weakSelf showQR];
-                break;
-            case ShowPDF:
-                [weakSelf showPDF];
-                break;
-            case ShowBarcode:
-                [weakSelf showBarcode];
-                break;
-            case ShowText:
-                [weakSelf showText];
-                break;
-            case ClearHistory:
-                [weakSelf clearHistory];
-                break;
-            default:
-                break;
-        }
-    }];
-
+    UserCommitSettings settings = [[note.userInfo valueForKey:@"resultForHistory"] intValue];
+    switch (settings) {
+        case Editing:
+            [self setEditingHistory];
+            break;
+        case ShowAll:
+            [self showAll];
+            break;
+        case ShowQR:
+            [self showQR];
+            break;
+        case ShowPDF:
+            [self showPDF];
+            break;
+        case ShowBarcode:
+            [self showBarcode];
+            break;
+        case ShowText:
+            [self showText];
+            break;
+        case ClearHistory:
+            [self clearHistory];
+            break;
+        default:
+            break;
+    }
 }
 
 
@@ -718,17 +707,13 @@ typedef enum {
 //        vc.historyVC = self;
 //    }
 }
+- (IBAction)actionSideMenu:(UIButton *)sender{
+    NSDictionary* dict = [NSDictionary dictionaryWithObject:@(2) forKey:@"resultForHistory"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UserAddSideMenuNotificftion
+                                                        object:nil
+                                                      userInfo:dict];
 
-
-#pragma mark - LGSideMenuDelegate
-
-- (void)willShowRightView:(nonnull UIView *)rightView sideMenuController:(nonnull LGSideMenuController *)sideMenuController{
-
-    
 }
 
-- (void)willHideRightView:(nonnull UIView *)rightView sideMenuController:(nonnull LGSideMenuController *)sideMenuController{
-    
-}
 
 @end

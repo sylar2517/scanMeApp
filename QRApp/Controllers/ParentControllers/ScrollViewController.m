@@ -47,12 +47,27 @@
     if (self.scrollView.contentOffset.x == CGRectGetWidth(self.view.frame)) {
         [self.delegate changeScreen:YES];
     }
+
+     [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(sideMenuShow: )
+                                                     name:@"UserAddSideMenuNotificftion"
+                                                   object:nil];
+    
+     [[NSNotificationCenter defaultCenter] addObserver:self
+                                              selector:@selector(sideMenuHide: )
+                                                  name:@"UserHideSideMenuNotificftion"
+                                                object:nil];
+
+
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
 }
 
-
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 #pragma mark - UIScrollViewDelegate
 
 
@@ -108,6 +123,20 @@
     }
     
 
+}
+
+#pragma mark - NSNotification
+-(void)sideMenuShow:(NSNotification*)note{
+    if ([[note.userInfo valueForKey:@"resultForHistory"] intValue] == 2) {
+        CGPoint bottomOffset = CGPointMake(self.scrollView.contentOffset.x + 230, 0);
+        [self.scrollView setContentOffset:bottomOffset animated:YES];
+    }
+}
+-(void)sideMenuHide:(NSNotification*)note{
+    if ([[note.userInfo valueForKey:@"resultForHistory"] intValue] == 3) {
+        CGPoint bottomOffset = CGPointMake(self.scrollView.contentOffset.x - 230, 0);
+        [self.scrollView setContentOffset:bottomOffset animated:YES];
+    }
 }
 
 

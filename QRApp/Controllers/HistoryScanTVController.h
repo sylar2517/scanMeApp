@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
-
+- (IBAction)actionSideMenu:(UIButton *)sender;
 
 @end
 

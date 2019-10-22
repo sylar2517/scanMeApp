@@ -39,13 +39,6 @@
 		764AF5AE22E0991E00A63293 /* CustomQRTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 764AF5AD22E0991E00A63293 /* CustomQRTableViewController.m */; };
 		7653841222C0D9EC00D6EDDE /* PopUpForScan.m in Sources */ = {isa = PBXBuildFile; fileRef = 7653841122C0D9EC00D6EDDE /* PopUpForScan.m */; };
 		7654A67222CFCE9F004D7C5F /* Vision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7654A67122CFCE9F004D7C5F /* Vision.framework */; };
-		7656FD33235E41620031DF01 /* LGSideMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7656FD27235E41600031DF01 /* LGSideMenuView.m */; };
-		7656FD34235E41620031DF01 /* LGSideMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7656FD28235E41600031DF01 /* LGSideMenuController.m */; };
-		7656FD35235E41620031DF01 /* LGSideMenuHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7656FD2B235E41610031DF01 /* LGSideMenuHelper.m */; };
-		7656FD36235E41620031DF01 /* LGSideMenuSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7656FD2E235E41620031DF01 /* LGSideMenuSegue.m */; };
-		7656FD37235E41620031DF01 /* UIViewController+LGSideMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7656FD2F235E41620031DF01 /* UIViewController+LGSideMenuController.m */; };
-		7656FD38235E41620031DF01 /* LGSideMenuBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7656FD30235E41620031DF01 /* LGSideMenuBorderView.m */; };
-		7656FD39235E41620031DF01 /* LGSideMenuGesturesHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7656FD32235E41620031DF01 /* LGSideMenuGesturesHandler.m */; };
 		765D66C622CBFFAF00F79EDC /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 765D66C522CBFFAF00F79EDC /* SettingsViewController.m */; };
 		7663F4AF22EA306200BCFF9D /* ScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7663F4AE22EA306200BCFF9D /* ScrollViewController.m */; };
 		767C120923073FF10012A281 /* SideMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 767C120823073FF10012A281 /* SideMenuTableViewController.m */; };
@@ -162,20 +155,6 @@
 		7653841022C0D9EC00D6EDDE /* PopUpForScan.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopUpForScan.h; sourceTree = "<group>"; };
 		7653841122C0D9EC00D6EDDE /* PopUpForScan.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PopUpForScan.m; sourceTree = "<group>"; };
 		7654A67122CFCE9F004D7C5F /* Vision.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Vision.framework; path = System/Library/Frameworks/Vision.framework; sourceTree = SDKROOT; };
-		7656FD25235E41600031DF01 /* LGSideMenuSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSideMenuSegue.h; sourceTree = "<group>"; };
-		7656FD26235E41600031DF01 /* UIViewController+LGSideMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LGSideMenuController.h"; sourceTree = "<group>"; };
-		7656FD27235E41600031DF01 /* LGSideMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSideMenuView.m; sourceTree = "<group>"; };
-		7656FD28235E41600031DF01 /* LGSideMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSideMenuController.m; sourceTree = "<group>"; };
-		7656FD29235E41610031DF01 /* LGSideMenuHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSideMenuHelper.h; sourceTree = "<group>"; };
-		7656FD2A235E41610031DF01 /* LGSideMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSideMenuController.h; sourceTree = "<group>"; };
-		7656FD2B235E41610031DF01 /* LGSideMenuHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSideMenuHelper.m; sourceTree = "<group>"; };
-		7656FD2C235E41610031DF01 /* LGSideMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSideMenuView.h; sourceTree = "<group>"; };
-		7656FD2D235E41610031DF01 /* LGSideMenuGesturesHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSideMenuGesturesHandler.h; sourceTree = "<group>"; };
-		7656FD2E235E41620031DF01 /* LGSideMenuSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSideMenuSegue.m; sourceTree = "<group>"; };
-		7656FD2F235E41620031DF01 /* UIViewController+LGSideMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LGSideMenuController.m"; sourceTree = "<group>"; };
-		7656FD30235E41620031DF01 /* LGSideMenuBorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSideMenuBorderView.m; sourceTree = "<group>"; };
-		7656FD31235E41620031DF01 /* LGSideMenuBorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSideMenuBorderView.h; sourceTree = "<group>"; };
-		7656FD32235E41620031DF01 /* LGSideMenuGesturesHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSideMenuGesturesHandler.m; sourceTree = "<group>"; };
 		765D66C422CBFFAF00F79EDC /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		765D66C522CBFFAF00F79EDC /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		7663F4AD22EA306200BCFF9D /* ScrollViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScrollViewController.h; sourceTree = "<group>"; };
@@ -447,27 +426,6 @@
 			path = ModelsCoreData;
 			sourceTree = "<group>";
 		};
-		7656FD24235E414C0031DF01 /* LGSideMenuController */ = {
-			isa = PBXGroup;
-			children = (
-				7656FD31235E41620031DF01 /* LGSideMenuBorderView.h */,
-				7656FD30235E41620031DF01 /* LGSideMenuBorderView.m */,
-				7656FD2A235E41610031DF01 /* LGSideMenuController.h */,
-				7656FD28235E41600031DF01 /* LGSideMenuController.m */,
-				7656FD2D235E41610031DF01 /* LGSideMenuGesturesHandler.h */,
-				7656FD32235E41620031DF01 /* LGSideMenuGesturesHandler.m */,
-				7656FD29235E41610031DF01 /* LGSideMenuHelper.h */,
-				7656FD2B235E41610031DF01 /* LGSideMenuHelper.m */,
-				7656FD25235E41600031DF01 /* LGSideMenuSegue.h */,
-				7656FD2E235E41620031DF01 /* LGSideMenuSegue.m */,
-				7656FD2C235E41610031DF01 /* LGSideMenuView.h */,
-				7656FD27235E41600031DF01 /* LGSideMenuView.m */,
-				7656FD26235E41600031DF01 /* UIViewController+LGSideMenuController.h */,
-				7656FD2F235E41620031DF01 /* UIViewController+LGSideMenuController.m */,
-			);
-			path = LGSideMenuController;
-			sourceTree = "<group>";
-		};
 		76C5F30A233FD95D009BA9D5 /* CreateQR */ = {
 			isa = PBXGroup;
 			children = (
@@ -507,7 +465,6 @@
 		76D3EAE0233D369900032F71 /* SideMenu */ = {
 			isa = PBXGroup;
 			children = (
-				7656FD24235E414C0031DF01 /* LGSideMenuController */,
 				767C120723073FF10012A281 /* SideMenuTableViewController.h */,
 				767C120823073FF10012A281 /* SideMenuTableViewController.m */,
 			);
@@ -798,11 +755,9 @@
 				7617905622DE65270038F9D4 /* QRCollectionViewCell.m in Sources */,
 				763CD00822C6A3D30009F955 /* DataManager.m in Sources */,
 				765D66C622CBFFAF00F79EDC /* SettingsViewController.m in Sources */,
-				7656FD37235E41620031DF01 /* UIViewController+LGSideMenuController.m in Sources */,
 				768562F122DF920E00971F25 /* СhooseQRTableViewController.m in Sources */,
 				76BB996D233021870077D145 /* SettingsTableViewController.m in Sources */,
 				7614778522BFF9FF00022E85 /* QRViewController.m in Sources */,
-				7656FD35235E41620031DF01 /* LGSideMenuHelper.m in Sources */,
 				761AFDAE2326F9CF004C328B /* ResultTextVC.m in Sources */,
 				7606926E22C3F8D000BB9D6E /* HistoryCell.m in Sources */,
 				768562EE22DF90A000971F25 /* QRPost+CoreDataProperties.m in Sources */,
@@ -821,26 +776,21 @@
 				7614780122C0262C00022E85 /* HistoryScanTVController.m in Sources */,
 				76371E8222C160DE00AF8E28 /* GalleryViewController.m in Sources */,
 				762FEE79233AAB5D00344428 /* ResultBarcodeViewController.m in Sources */,
-				7656FD34235E41620031DF01 /* LGSideMenuController.m in Sources */,
 				76D3EADF233CCEBD00032F71 /* ShowBarcodeViewController.m in Sources */,
 				768450CC2334310F00243831 /* BarcodePost+CoreDataProperties.m in Sources */,
 				762D639922DD00F600013805 /* HistoryPost+CoreDataClass.m in Sources */,
 				76B5429222E1D9ED00123E06 /* ContactTableViewController.m in Sources */,
 				7684C15A22E5D17E007A72C7 /* Color.m in Sources */,
-				7656FD33235E41620031DF01 /* LGSideMenuView.m in Sources */,
 				76B7E9C6230DCF3A00BCA236 /* CameraFocusSquare.m in Sources */,
 				763980A222F2397700929E05 /* QRPopViewController.m in Sources */,
 				767C120923073FF10012A281 /* SideMenuTableViewController.m in Sources */,
 				762D639822DD00F600013805 /* Posts+CoreDataProperties.m in Sources */,
 				76D001D123394A7B00C4549C /* ParentTabViewController.m in Sources */,
-				7656FD36235E41620031DF01 /* LGSideMenuSegue.m in Sources */,
-				7656FD39235E41620031DF01 /* LGSideMenuGesturesHandler.m in Sources */,
 				762FEE7C233AB45400344428 /* BarcodeMainViewController.m in Sources */,
 				7663F4AF22EA306200BCFF9D /* ScrollViewController.m in Sources */,
 				7653841222C0D9EC00D6EDDE /* PopUpForScan.m in Sources */,
 				76B257F822C93A60002E22D5 /* CreationViewController.m in Sources */,
 				7606927122C4069200BB9D6E /* ResultViewController.m in Sources */,
-				7656FD38235E41620031DF01 /* LGSideMenuBorderView.m in Sources */,
 				763CD01822C6A60C0009F955 /* CoreDataTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
