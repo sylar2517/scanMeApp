@@ -167,29 +167,103 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N2S-ez-6Eh">
+                                <rect key="frame" x="82" y="323" width="250" height="250"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PrX-yw-KCT">
+                                        <rect key="frame" x="8" y="192" width="234" height="50"/>
+                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="C86-eR-2RX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                        <state key="normal" title="Понятно!">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="actionDissmissBaner:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PfS-XG-mTp"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Для перехода в историю сделайте свайп влево" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXA-NV-MLD">
+                                        <rect key="frame" x="8" y="8" width="234" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="Gmg-jn-BX4"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swipe" translatesAutoresizingMaskIntoConstraints="NO" id="Joz-tW-dUv">
+                                        <rect key="frame" x="192" y="100" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="MYa-3m-Ku7"/>
+                                            <constraint firstAttribute="height" constant="50" id="UhE-kK-Hhz"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.10000000000000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="Cue-OM-mqC"/>
+                                    <constraint firstItem="PrX-yw-KCT" firstAttribute="leading" secondItem="N2S-ez-6Eh" secondAttribute="leading" constant="8" id="U23-HA-8lH"/>
+                                    <constraint firstAttribute="width" constant="250" id="kBY-RK-3dc"/>
+                                    <constraint firstAttribute="trailing" secondItem="YXA-NV-MLD" secondAttribute="trailing" constant="8" id="lAU-hx-EuL"/>
+                                    <constraint firstAttribute="bottom" secondItem="PrX-yw-KCT" secondAttribute="bottom" constant="8" id="lWK-KT-qCj"/>
+                                    <constraint firstItem="YXA-NV-MLD" firstAttribute="top" secondItem="N2S-ez-6Eh" secondAttribute="top" constant="8" id="lhQ-6u-x4m"/>
+                                    <constraint firstItem="YXA-NV-MLD" firstAttribute="leading" secondItem="N2S-ez-6Eh" secondAttribute="leading" constant="8" id="tmH-HX-p2U"/>
+                                    <constraint firstAttribute="trailing" secondItem="Joz-tW-dUv" secondAttribute="trailing" constant="8" id="v3l-N0-y8S"/>
+                                    <constraint firstAttribute="trailing" secondItem="PrX-yw-KCT" secondAttribute="trailing" constant="8" id="z73-lB-Nmd"/>
+                                    <constraint firstItem="Joz-tW-dUv" firstAttribute="centerY" secondItem="N2S-ez-6Eh" secondAttribute="centerY" id="zks-aF-I2u"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fgd-Ya-z0B">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="5LK-jh-Nms">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="regular"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="i85-ru-AEG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="71n-jK-clS"/>
                             <constraint firstItem="ppp-Xu-MWC" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="7xu-Rx-x6s"/>
+                            <constraint firstItem="Fgd-Ya-z0B" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="H71-tw-9gt"/>
                             <constraint firstAttribute="bottom" secondItem="X0G-fz-TG5" secondAttribute="bottom" constant="10" id="HEZ-QJ-0cX"/>
+                            <constraint firstItem="Fgd-Ya-z0B" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ICd-tE-duX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="i85-ru-AEG" secondAttribute="trailing" constant="10" id="Oyv-c0-sx9"/>
                             <constraint firstItem="X0G-fz-TG5" firstAttribute="top" secondItem="i85-ru-AEG" secondAttribute="bottom" constant="10" id="RS0-rE-iKv"/>
                             <constraint firstAttribute="bottom" secondItem="ppp-Xu-MWC" secondAttribute="bottom" id="Rfd-j6-l3N"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="X0G-fz-TG5" secondAttribute="trailing" constant="10" id="SWk-xe-vL7"/>
                             <constraint firstItem="yMi-Sw-5F4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Wny-yY-cvw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Fgd-Ya-z0B" secondAttribute="trailing" id="Wrm-8m-4oE"/>
                             <constraint firstAttribute="bottom" secondItem="lzo-oe-MHC" secondAttribute="bottom" constant="18" id="XdQ-G2-bCp"/>
                             <constraint firstItem="X0G-fz-TG5" firstAttribute="top" secondItem="jeg-n1-oEe" secondAttribute="bottom" constant="8" id="Xhy-Sg-qQi"/>
                             <constraint firstItem="X0G-fz-TG5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="YBk-mY-N1v"/>
                             <constraint firstItem="lzo-oe-MHC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Zvz-Cu-fDY"/>
                             <constraint firstItem="yMi-Sw-5F4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="haa-Kw-CBR"/>
+                            <constraint firstAttribute="bottom" secondItem="Fgd-Ya-z0B" secondAttribute="bottom" id="ir0-HD-cuS"/>
                             <constraint firstItem="jeg-n1-oEe" firstAttribute="trailing" secondItem="X0G-fz-TG5" secondAttribute="trailing" id="lql-Wp-3KE"/>
                             <constraint firstItem="ppp-Xu-MWC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lvy-HO-xm8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lzo-oe-MHC" secondAttribute="trailing" constant="20" id="n5Y-Tc-fxG"/>
                             <constraint firstItem="X0G-fz-TG5" firstAttribute="top" secondItem="MgU-C6-aHc" secondAttribute="bottom" constant="8" id="oT1-bN-udU"/>
                             <constraint firstItem="MgU-C6-aHc" firstAttribute="centerX" secondItem="X0G-fz-TG5" secondAttribute="centerX" id="p0D-eN-wYT"/>
+                            <constraint firstItem="N2S-ez-6Eh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="q01-gD-DjB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ppp-Xu-MWC" secondAttribute="trailing" id="qrU-CG-2zP"/>
+                            <constraint firstItem="N2S-ez-6Eh" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="zB0-ah-B7q"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -198,6 +272,9 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="QRScanButton" destination="QaU-48-Ujt" id="YNP-lz-3EL"/>
+                        <outlet property="allerConstrain" destination="v3l-N0-y8S" id="AvV-gj-cqZ"/>
+                        <outlet property="allerView" destination="N2S-ez-6Eh" id="okj-HH-FmI"/>
+                        <outlet property="blurView" destination="Fgd-Ya-z0B" id="Z6G-ON-Uey"/>
                         <outlet property="bottomConstrain" destination="HEZ-QJ-0cX" id="Qtq-hE-xKe"/>
                         <outlet property="conterButton" destination="CdW-ll-KQA" id="xXq-gc-a4N"/>
                         <outlet property="conterView" destination="jeg-n1-oEe" id="yZ8-P0-Zxc"/>
@@ -218,7 +295,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3012" y="435"/>
+            <point key="canvasLocation" x="-3013.04347826087" y="434.59821428571428"/>
         </scene>
         <!--История-->
         <scene sceneID="uIa-fI-0N5">
@@ -389,7 +466,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="q6R-nG-MOa"/>
                                 </constraints>
                                 <state key="normal" title="Удалить фото">
-                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="actionDeletePhoto:" destination="x2F-Cf-pen" eventType="touchUpInside" id="9uB-6L-2z3"/>
@@ -766,7 +843,7 @@
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="trash" id="nqb-Nb-hrS">
-                                <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="deleteAll:" destination="B8p-hx-pGc" id="GZu-Cj-0jJ"/>
                                 </connections>
@@ -1029,7 +1106,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgz-uO-3El">
                                 <rect key="frame" x="290" y="317" width="104" height="30"/>
                                 <state key="normal" title="Отчистить все">
-                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="actionDeleteAllQR:" destination="9xt-Pu-Paf" eventType="touchUpInside" id="HDA-0p-dbn"/>
@@ -5040,6 +5117,7 @@
         <image name="phone" width="100" height="100"/>
         <image name="qr" width="30" height="30"/>
         <image name="sideMenu" width="30" height="30"/>
+        <image name="swipe" width="200" height="190"/>
         <image name="tabBarTest" width="30" height="30"/>
         <image name="text" width="30" height="30"/>
         <image name="textIcon" width="100" height="100"/>

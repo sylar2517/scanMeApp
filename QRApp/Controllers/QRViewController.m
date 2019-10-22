@@ -34,11 +34,11 @@ typedef NS_ENUM(NSUInteger, AVCamSetupResult) {
     AVCamSetupResultSessionConfigurationFailed
 };
 
-static NSString* kSettingsTouchID                     = @"touchID";
 static NSString* kSettingsVibro                     = @"password";
 static NSString* kSettingsAudio                     = @"audio";
 static NSString* kSettingsResult                    = @"result";
 static NSString* kSettingsFirstRun                  = @"FirstRun";
+static NSString* kSettingsSwipe                     = @"swipe";
 
 @interface QRViewController () <AVCaptureMetadataOutputObjectsDelegate,AVCaptureVideoDataOutputSampleBufferDelegate, ScrollViewControllerDelegate, AVCapturePhotoCaptureDelegate>
 
@@ -147,7 +147,22 @@ static NSString* kSettingsFirstRun                  = @"FirstRun";
     
     self.tempStr = @"";
     self.tempStrBarcode = @"";
+    [self.allerView setHidden:YES];
+    self.blurView.hidden = YES;
+}
+
+-(void)showAllerView{
     
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.allerView setHidden:NO];
+        [self.blurView setHidden:NO];
+        [self.view bringSubviewToFront:self.blurView];
+        [self.view bringSubviewToFront:self.allerView];
+        self.allerConstrain.constant += CGRectGetWidth(self.allerView.bounds) - 60;
+        [UIView animateWithDuration:3 delay:0 options:(UIViewAnimationOptionRepeat) animations:^{
+            [self.view layoutIfNeeded];
+        } completion:nil];
+    });
     
 }
 
@@ -160,6 +175,14 @@ static NSString* kSettingsFirstRun                  = @"FirstRun";
             case AVCamSetupResultSuccess:
             {
                 [self.session startRunning];
+                
+                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                NSInteger first = [userDefaults integerForKey:kSettingsSwipe];
+                if (first == 0) {
+                    [userDefaults setInteger:1337 forKey:kSettingsSwipe];
+                    [self showAllerView];
+                }
+
             }
                 break;
             default:
@@ -185,8 +208,6 @@ static NSString* kSettingsFirstRun                  = @"FirstRun";
     
     
     self.haveResult = YES;
-    [self focusOnPoint:CGPointMake(self.view.center.x, self.view.center.y)];
-    
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -215,16 +236,6 @@ static NSString* kSettingsFirstRun                  = @"FirstRun";
             }
         }
     }
-//    [self.qrView removeFromSuperview];
-//    self.qrView.frame = CGRectZero;
-//    self.qrLabel.text = nil;
-//    if (self.qrView && self.buttonPressed != 0) {
-//        [self.qrView removeFromSuperview];
-//        self.qrView.frame = CGRectZero;
-//        self.qrLabel.text = nil;
-//    }
-   
-//    NSLog(@"2 - %@", self.imageView.layer.sublayers);
 }
 
 
@@ -234,18 +245,6 @@ static NSString* kSettingsFirstRun                  = @"FirstRun";
     CGPoint pointOnMainView = [touch locationInView:self.view];
     
     [self focusOnPoint:pointOnMainView];
-    
-    if (!self.focusSquare) {
-        self.focusSquare = [[CameraFocusSquare alloc] initWithTouchPoint:pointOnMainView];
-        [self.view addSubview:self.focusSquare];
-        [self.focusSquare setNeedsDisplay];
-    } else {
-        [self.view bringSubviewToFront:self.focusSquare];
-        [self.focusSquare updatePoint:pointOnMainView];
-    }
-    
-    [self.focusSquare animateFocusingAction];
-    
 }
 
 
@@ -253,9 +252,7 @@ static NSString* kSettingsFirstRun                  = @"FirstRun";
     
     
     CGRect rect1 = CGRectMake(0, CGRectGetMinY(self.toolBarView.frame) - 50, CGRectGetWidth(self.view.frame), 400);
-    CGRect rect2 = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.toolBarView.frame) + 50);
-
-    if (CGRectContainsPoint(rect1, pointOnView) | CGRectContainsPoint(rect2, pointOnView)) {
+    if (CGRectContainsPoint(rect1, pointOnView)) {
         return;
     }
     
@@ -290,6 +287,17 @@ static NSString* kSettingsFirstRun                  = @"FirstRun";
             NSLog(@"error - %@", error);
         }
     }
+    
+    if (!self.focusSquare) {
+        self.focusSquare = [[CameraFocusSquare alloc] initWithTouchPoint:pointOnView];
+        [self.view addSubview:self.focusSquare];
+        [self.focusSquare setNeedsDisplay];
+    } else {
+        [self.view bringSubviewToFront:self.focusSquare];
+        [self.focusSquare updatePoint:pointOnView];
+    }
+    
+    [self.focusSquare animateFocusingAction];
 }
 - (void)pinchDetected:(UIPinchGestureRecognizer *)pinchRecognizer{
     
@@ -329,10 +337,7 @@ static NSString* kSettingsFirstRun                  = @"FirstRun";
         self.haveResult = NO;
     } else {
         [self.session startRunning];
-        
-        [self focusOnPoint:CGPointMake(self.view.center.x, self.view.center.y)];
-        
-        
+
         self.haveResult = YES;
         if (self.qrLabel.text){
             [self.qrView removeFromSuperview];
@@ -547,10 +552,6 @@ static NSString* kSettingsFirstRun                  = @"FirstRun";
             [flashLight unlockForConfiguration];
         }
     }
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self focusOnPoint:CGPointMake(self.view.center.x, self.view.center.y)];
-    });
 }
 
 
@@ -575,7 +576,6 @@ static NSString* kSettingsFirstRun                  = @"FirstRun";
             [self buttonCliked:sender];
             
             self.buttonPressed = sender.tag;
-            [self focusOnPoint:CGPointMake(self.view.center.x, self.view.center.y)];
             [[DataManager sharedManager] setCurrentSession:self.session];
         }
     }];
@@ -606,7 +606,6 @@ static NSString* kSettingsFirstRun                  = @"FirstRun";
     
     [self buttonCliked:sender];
     self.buttonPressed = sender.tag;
-    [self focusOnPoint:CGPointMake(self.view.center.x, self.view.center.y)];
     [[DataManager sharedManager] setCurrentSession:self.session];
 }
 
@@ -617,8 +616,6 @@ static NSString* kSettingsFirstRun                  = @"FirstRun";
         if (test) {
             return;
         } else {
-            
-           
             
             if (sender.tag == self.buttonPressed) {
                 return;
@@ -647,10 +644,8 @@ static NSString* kSettingsFirstRun                  = @"FirstRun";
             self.barcodeViewBottom = view2;
             [self.view addSubview:self.barcodeViewBottom];
             [self.view bringSubviewToFront:self.toolBarView];
-            //    [self focusOnPoint:CGPointMake(self.view.center.x, self.view.center.y)];
             self.buttonPressed = sender.tag;
             [[DataManager sharedManager] setCurrentSession:self.session];
-            [self focusOnPoint:CGPointMake(self.view.center.x, self.view.center.y)];
         }
     }];
 
@@ -1655,10 +1650,14 @@ static NSString* kSettingsFirstRun                  = @"FirstRun";
 #pragma mark - NSNotification
 -(void)appMovedToForeground:(NSNotification*)notification{
     [self.session startRunning];
-    [self focusOnPoint:CGPointMake(self.view.center.x, self.view.center.y)];
+    //[self focusOnPoint:CGPointMake(self.view.center.x, self.view.center.y)];
 }
 -(void)appMovedToBackground:(NSNotification*)notification{
     [self.session stopRunning];
 }
 
+- (IBAction)actionDissmissBaner:(UIButton *)sender{
+    self.allerView.hidden = YES;
+    self.blurView.hidden = YES;
+}
 @end

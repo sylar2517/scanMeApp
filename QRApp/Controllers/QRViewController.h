@@ -31,6 +31,10 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstrain;
 @property (weak, nonatomic) IBOutlet UIButton *textScanButton;
 @property (weak, nonatomic) IBOutlet UILabel *saveLabel;
+@property (weak, nonatomic) IBOutlet UIView *allerView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *allerConstrain;
+@property (weak, nonatomic) IBOutlet UIVisualEffectView *blurView;
+
 
 
 
@@ -45,7 +49,7 @@
 - (IBAction)actionScanTextButton:(UIButton *)sender;
 
 //@property (weak, nonatomic) IBOutlet UISlider *zoomSlider;
-
+- (IBAction)actionDissmissBaner:(UIButton *)sender;
 
 @end
 

@@ -154,13 +154,26 @@
             if (granted) {
                 [self openContact];
             } else {
-                NSLog(@"Not authorized");
+                [self showAllert];
             }
         }];
         
     } else if (status == CNAuthorizationStatusAuthorized) {
         [self openContact];
+    } else if (status == CNAuthorizationStatusDenied) {
+       [self showAllert];
     }
+    
+}
+
+-(void)showAllert{
+    NSString* messege = @"Чтобы использовать эту функцию приложения, вам необходимо разрешить доступ к контактам. Пожалуйста перейдтите в Настройки -> ScanMe -> Конфиденциальность и пожалуйста предоставьте разрешение к  доступу к контактам";
+    UIAlertController* ac = [UIAlertController alertControllerWithTitle: @"Ошибка" message:messege preferredStyle:(UIAlertControllerStyleAlert)];
+    
+    UIAlertAction* aa = [UIAlertAction actionWithTitle:@"Отмена" style:(UIAlertActionStyleCancel) handler:nil];
+    [ac addAction:aa];
+    
+    [self presentViewController:ac animated:YES completion:nil];
     
 }
 

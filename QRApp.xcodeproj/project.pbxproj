@@ -28,7 +28,6 @@
 		762D639A22DD00F600013805 /* HistoryPost+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 762D639622DD00F600013805 /* HistoryPost+CoreDataProperties.m */; };
 		762FEE79233AAB5D00344428 /* ResultBarcodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 762FEE78233AAB5D00344428 /* ResultBarcodeViewController.m */; };
 		762FEE7C233AB45400344428 /* BarcodeMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 762FEE7B233AB45400344428 /* BarcodeMainViewController.m */; };
-		76332D832333E55A00E935A4 /* LogoNew (1).png in Resources */ = {isa = PBXBuildFile; fileRef = 76332D822333E55A00E935A4 /* LogoNew (1).png */; };
 		76371E8222C160DE00AF8E28 /* GalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76371E8122C160DE00AF8E28 /* GalleryViewController.m */; };
 		763980A222F2397700929E05 /* QRPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 763980A122F2397700929E05 /* QRPopViewController.m */; };
 		763980A722F2484300929E05 /* QRFromImageTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 763980A622F2484300929E05 /* QRFromImageTVC.m */; };
@@ -62,6 +61,7 @@
 		76D001D123394A7B00C4549C /* ParentTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D001D023394A7B00C4549C /* ParentTabViewController.m */; };
 		76D3EADF233CCEBD00032F71 /* ShowBarcodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D3EADE233CCEBD00032F71 /* ShowBarcodeViewController.m */; };
 		76E17EA322E8899D00E4B33F /* ZoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E17EA222E8899D00E4B33F /* ZoomViewController.m */; };
+		76E64B16235F8902006936CD /* 245and52 px.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E64B15235F8902006936CD /* 245and52 px.png */; };
 		76F32D2423357DCB00F7C3ED /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 76F32D2323357DCB00F7C3ED /* info.png */; };
 		76FBC54E22DBC2EF00B3FBC3 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76FBC54D22DBC2EF00B3FBC3 /* WebViewController.m */; };
 		76FBC55022DBCBC100B3FBC3 /* PDFKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76FBC54F22DBCBC100B3FBC3 /* PDFKit.framework */; };
@@ -136,7 +136,6 @@
 		762FEE78233AAB5D00344428 /* ResultBarcodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultBarcodeViewController.m; sourceTree = "<group>"; };
 		762FEE7A233AB45400344428 /* BarcodeMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BarcodeMainViewController.h; sourceTree = "<group>"; };
 		762FEE7B233AB45400344428 /* BarcodeMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BarcodeMainViewController.m; sourceTree = "<group>"; };
-		76332D822333E55A00E935A4 /* LogoNew (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LogoNew (1).png"; sourceTree = "<group>"; };
 		76371E8022C160DE00AF8E28 /* GalleryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GalleryViewController.h; sourceTree = "<group>"; };
 		76371E8122C160DE00AF8E28 /* GalleryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GalleryViewController.m; sourceTree = "<group>"; };
 		763980A022F2397700929E05 /* QRPopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QRPopViewController.h; sourceTree = "<group>"; };
@@ -197,6 +196,7 @@
 		76D3EADE233CCEBD00032F71 /* ShowBarcodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowBarcodeViewController.m; sourceTree = "<group>"; };
 		76E17EA122E8899D00E4B33F /* ZoomViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZoomViewController.h; sourceTree = "<group>"; };
 		76E17EA222E8899D00E4B33F /* ZoomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZoomViewController.m; sourceTree = "<group>"; };
+		76E64B15235F8902006936CD /* 245and52 px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "245and52 px.png"; sourceTree = "<group>"; };
 		76F32D2323357DCB00F7C3ED /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
 		76FBC54C22DBC2EF00B3FBC3 /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		76FBC54D22DBC2EF00B3FBC3 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
@@ -489,7 +489,7 @@
 		76EC4DBD2332D55B007C7AC3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				76332D822333E55A00E935A4 /* LogoNew (1).png */,
+				76E64B15235F8902006936CD /* 245and52 px.png */,
 				76F32D2323357DCB00F7C3ED /* info.png */,
 			);
 			path = Images;
@@ -617,10 +617,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7614779022BFFA0000022E85 /* LaunchScreen.storyboard in Resources */,
-				76332D832333E55A00E935A4 /* LogoNew (1).png in Resources */,
 				7614778D22BFFA0000022E85 /* Assets.xcassets in Resources */,
 				7614778822BFF9FF00022E85 /* Main.storyboard in Resources */,
 				76F32D2423357DCB00F7C3ED /* info.png in Resources */,
+				76E64B16235F8902006936CD /* 245and52 px.png in Resources */,
 				7646ABD72351460100AA6C75 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
