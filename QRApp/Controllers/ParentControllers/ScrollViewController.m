@@ -15,13 +15,12 @@
 
 @interface ScrollViewController () <UIScrollViewDelegate, QRViewControllerDelegate, ParentTabViewControllerDelegate>
 
-
-
 @property(assign, nonatomic)BOOL firstTime;
 @property(strong, nonatomic) UIButton* sideMenuExitButton;
 
-
 @end
+
+static const NSInteger sizeSideMenu = 230;
 
 @implementation ScrollViewController
 
@@ -36,13 +35,12 @@
     [self.tabBarController.tabBar setHidden:YES];
     self.firstTime = YES;
     
+    self.lockedView.hidden = YES;
 }
-
 
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    //CGFloat x = self.scrollView.contentOffset.x;
     
     if (self.scrollView.contentOffset.x == CGRectGetWidth(self.view.frame)) {
         [self.delegate changeScreen:YES];
@@ -68,17 +66,37 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
 #pragma mark - UIScrollViewDelegate
 
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     if (!decelerate) {
         [self stopScrolling:scrollView.contentOffset.x];
+        NSLog(@"BBB");
     }
 }
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-        [self stopScrolling:scrollView.contentOffset.x];
+    
+    [self stopScrolling:scrollView.contentOffset.x];
+    
+    if (scrollView.contentOffset.x == CGRectGetWidth(self.view.bounds) + sizeSideMenu) {
+        [self showLockedView];
+    } else if (scrollView.contentOffset.x == CGRectGetWidth(self.view.bounds)) {
+        self.lockedView.hidden = YES;
+        
+    }
 }
+
+
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+//    //NSLog(@"AAA = %f", scrollView.contentOffset.x);
+//    if (scrollView.contentOffset.x == CGRectGetWidth(self.view.bounds) + sizeSideMenu) {
+//        self.lockedView.hidden = YES;
+//        NSLog(@"AAA");
+//    }
+//}
 
 -(void)stopScrolling:(NSInteger)interVal{
     if (interVal > 1) {
@@ -128,16 +146,52 @@
 #pragma mark - NSNotification
 -(void)sideMenuShow:(NSNotification*)note{
     if ([[note.userInfo valueForKey:@"resultForHistory"] intValue] == 2) {
-        CGPoint bottomOffset = CGPointMake(self.scrollView.contentOffset.x + 230, 0);
+        CGPoint bottomOffset = CGPointMake(self.scrollView.contentOffset.x + sizeSideMenu, 0);
         [self.scrollView setContentOffset:bottomOffset animated:YES];
+        [self showLockedView];
     }
 }
+
 -(void)sideMenuHide:(NSNotification*)note{
     if ([[note.userInfo valueForKey:@"resultForHistory"] intValue] == 3) {
-        CGPoint bottomOffset = CGPointMake(self.scrollView.contentOffset.x - 230, 0);
+        CGPoint bottomOffset = CGPointMake(self.scrollView.contentOffset.x - sizeSideMenu, 0);
         [self.scrollView setContentOffset:bottomOffset animated:YES];
+        self.lockedView.hidden = YES;
     }
 }
+
+
+- (IBAction)actionCloseSideMenu:(id)sender {
+    CGPoint bottomOffset = CGPointMake(self.scrollView.contentOffset.x - sizeSideMenu, 0);
+    [self.scrollView setContentOffset:bottomOffset animated:YES];
+    self.lockedView.hidden = YES;
+
+
+    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+          dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+              if ([[UIApplication sharedApplication] isIgnoringInteractionEvents]) {
+                  [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+              }
+          });
+}
+
+//-(void)hiddenLockedView{
+//
+//
+//    self.lockedView.hidden = YES;
+//}
+
+-(void)showLockedView{
+    self.lockedView.hidden = NO;
+    self.sideMenuView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.sideMenuView.layer.shadowOpacity = 0.25;
+    self.sideMenuView.layer.shadowOffset = CGSizeMake(-10, 5);
+    self.sideMenuView.layer.masksToBounds = NO;
+    [self.view bringSubviewToFront:self.sideMenuView];
+}
+
+
+
 
 
 @end

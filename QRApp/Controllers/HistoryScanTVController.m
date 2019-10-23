@@ -708,11 +708,18 @@ NSString* const UserAddSideMenuNotificftion = @"UserAddSideMenuNotificftion";
 //    }
 }
 - (IBAction)actionSideMenu:(UIButton *)sender{
+    
     NSDictionary* dict = [NSDictionary dictionaryWithObject:@(2) forKey:@"resultForHistory"];
     [[NSNotificationCenter defaultCenter] postNotificationName:UserAddSideMenuNotificftion
                                                         object:nil
                                                       userInfo:dict];
 
+    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                if ([[UIApplication sharedApplication] isIgnoringInteractionEvents]) {
+                    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+                }
+            });
 }
 
 

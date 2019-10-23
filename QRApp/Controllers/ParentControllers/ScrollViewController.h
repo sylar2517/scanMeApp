@@ -22,8 +22,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthConstrain;
+@property (weak, nonatomic) IBOutlet UIView *lockedView;
+@property (weak, nonatomic) IBOutlet UIView *sideMenuView;
 
-
+- (IBAction)actionCloseSideMenu:(id)sender;
 
 @end
 
