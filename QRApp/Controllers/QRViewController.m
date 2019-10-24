@@ -733,12 +733,13 @@ static NSString* kSettingsSwipe                     = @"swipe";
    
     AVCapturePhotoSettings* settings = [AVCapturePhotoSettings photoSettings];
     
-    if ( UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad ) {
-       settings.flashMode = AVCaptureFlashModeAuto;
-    } else {
-        settings.flashMode = AVCaptureFlashModeOff;
-    }
-
+//    if ( UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad ) {
+//       settings.flashMode = AVCaptureFlashModeAuto;
+//    } else {
+//        settings.flashMode = AVCaptureFlashModeOff;
+//    }
+    settings.flashMode = AVCaptureFlashModeAuto;
+    
     [self.outputPhoto capturePhotoWithSettings:settings delegate:self];
 
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
@@ -1378,9 +1379,16 @@ static NSString* kSettingsSwipe                     = @"swipe";
 
     NSData *photoData = [photo fileDataRepresentation];
     UIImage* image = [UIImage imageWithData:photoData];
-    [self.tempForPhoto addObject:image];
-    [self.conterButton setTitle:[NSString stringWithFormat:@"%lu", (unsigned long)self.tempForPhoto.count] forState:(UIControlStateNormal)];
 
+  
+    dispatch_queue_t queue = dispatch_queue_create("downLoadAGroupPhoto", 0);
+    dispatch_async(queue, ^{
+       [self.tempForPhoto addObject:image];
+        dispatch_async(dispatch_get_main_queue(), ^{
+             [self.conterButton setTitle:[NSString stringWithFormat:@"%lu", (unsigned long)self.tempForPhoto.count] forState:(UIControlStateNormal)];
+        });
+    });
+    
     
     if ([[UIApplication sharedApplication] isIgnoringInteractionEvents]) {
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];

@@ -75,7 +75,13 @@ typedef enum {
     [[NSNotificationCenter defaultCenter] postNotificationName:UserHideSideMenuNotificftion
                                                            object:nil
                                                          userInfo:dict2];
-    
+
+    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if ([[UIApplication sharedApplication] isIgnoringInteractionEvents]) {
+            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+        }
+    });
     return NO;
 
 }

@@ -96,6 +96,9 @@ NSString* const UserAddSideMenuNotificftion = @"UserAddSideMenuNotificftion";
                                                  name:@"UserCommitSettingsDidChangeNotificftion"
                                                object:nil];
 
+
+    UITextField* test = [self.searchBar valueForKey:@"searchField"];
+    test.backgroundColor = [UIColor colorWithWhite:0.1 alpha:1];
 }
 
 
@@ -131,6 +134,9 @@ NSString* const UserAddSideMenuNotificftion = @"UserAddSideMenuNotificftion";
 
 
 -(void)refreshTableView{
+   
+    [self.filterObject removeAllObjects];
+    [self.tempObjectArray removeAllObjects];
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
 }
@@ -381,12 +387,6 @@ NSString* const UserAddSideMenuNotificftion = @"UserAddSideMenuNotificftion";
                     }
                     [self presentViewController:vc animated:YES completion:nil];
             }
-            
-//            ResultViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"resultVC"];
-//            vc.post = post;
-//            vc.fromCamera = NO;
-//            vc.delegate = self;
-//            [self presentViewController:vc animated:YES completion:nil];
         } else if ([post.type isEqualToString:@"PDF"]) {
             WebViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"webView"];
             vc.post = post;
@@ -408,7 +408,7 @@ NSString* const UserAddSideMenuNotificftion = @"UserAddSideMenuNotificftion";
 //            vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
             [self presentViewController:vc animated:YES completion:nil];
         } else if ([post.type isEqualToString:@"Text"]) {
-//            [self.hsDelegate historyScanTVControllerPresentResultBarcode:post];
+            
             ResultTextVC* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"resultVCText"];
             vc.fromCamera = NO;
             vc.text = post.value;
@@ -541,7 +541,7 @@ NSString* const UserAddSideMenuNotificftion = @"UserAddSideMenuNotificftion";
         if (self.tempObjectArray.count > 0) {
 
             [self.tempObjectArray removeAllObjects];
-            [self.tableView reloadData];
+            //[self.tableView reloadData];
         }
     }
 
