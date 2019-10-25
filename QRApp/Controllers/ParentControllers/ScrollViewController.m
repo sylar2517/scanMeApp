@@ -35,7 +35,7 @@ static const NSInteger sizeSideMenu = 230;
     self.navigationController.navigationBarHidden = YES;
     [self.tabBarController.tabBar setHidden:YES];
     self.firstTime = YES;
-    
+    self.isHaveShadow = YES;
     self.lockedView.hidden = YES;
 }
 
